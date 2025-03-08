@@ -1,5 +1,5 @@
 # Proyecto-final-modulo-4-React
-# Smart Home Store - Final Project
+Smart Home Store - Final Project
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -32,34 +32,31 @@ This project is a responsive front-end web application built with React. It simu
 ---
 
 ## Project Structure
-
-The project is structured as follows:
-
+```
 smart-home-store/
 ├── public/
-│   └── index.html                  # HTML template for the React app
+│   └── index.html                  # HTML template
 ├── src/
 │   ├── assets/                     # Static assets (images, etc.)
-│   ├── components/                 # React components for the application
+│   ├── components/                 # React components
 │   │   ├── Cart.jsx                # Shopping cart component
 │   │   ├── Footer.jsx              # Footer component
 │   │   ├── Header.jsx              # Header component
 │   │   ├── ProductDetails.jsx      # Product details view
 │   │   └── ProductList.jsx         # Product listing component
-│   ├── contexts/                   # Context providers for global state
+│   ├── contexts/                   # Context providers
 │   ├── hooks/                      # Custom hooks (e.g., useProducts.js)
-│   ├── services/                   # Fake API data and services
+│   ├── services/                   # Mock API data and services
 │   │   └── Products.jsx            # Array of smart home products
-│   ├── styles/                     # CSS files for modular styling
-│   │   ├── App.css                 # Global application styles (imported in App.jsx)
-│   │   ├── HeaderComponent.css     # Styles for the Header component
-│   │   └── ProductListComponent.css# Styles for the ProductList component
+│   ├── styles/                     # CSS files
+│   │   ├── App.css                 # Global application styles
+│   │   ├── HeaderComponent.css     # Styles for Header component
+│   │   └── ProductListComponent.css# Styles for ProductList component
 │   ├── App.jsx                     # Main application component with routing
 │   └── main.jsx                    # Entry point of the application
 ├── package.json                    # Project dependencies and scripts
-└── README.md                       # Documentation file
-
-
+└── README.md                       # Documentation file (this file)
+```
 
 ---
 
@@ -98,64 +95,78 @@ smart-home-store/
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/smart-home-store.git
-Navigate to the project directory:
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd smart-home-store
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+   or
+   ```bash
+   yarn install
+   ```
 
-bash
-cd smart-home-store
-Install the dependencies:
+### Usage
+1. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   or
+   ```bash
+   yarn dev
+   ```
+2. Open your browser and navigate to `http://localhost:3000` (or the port provided by your environment).
 
-bash
-npm install
-or
+---
 
-bash
-yarn install
-Usage
-Start the development server:
+## Evaluation Criteria
+| Criterion                          | Weight |
+|------------------------------------|--------|
+| Componentization & Code Structure  | 20%    |
+| Use of Hooks & Custom Hook         | 25%    |
+| Global State Management (Context)  | 20%    |
+| Routing & Navigation               | 15%    |
+| Fake API Integration & Local Storage | 10%  |
+| Documentation (README & Comments)  | 10%    |
 
-bash
-npm run dev
-or
+---
 
-bash
-yarn dev
-Open your browser and navigate to http://localhost:3000 (or the port provided by your environment).
-
-Evaluation Criteria
-Criterion	Weight
-Componentization & Code Structure	20%
-Use of Hooks & Custom Hook	25%
-Global State Management (Context)	20%
-Routing & Navigation	15%
-Fake API Integration & Local Storage	10%
-Documentation (README & Comments)	10%
-Contributing
+## Contributing
 Contributions are welcome! Follow these steps:
+1. Fork the repository.
+2. Create a new branch for your feature:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Commit your changes with a descriptive message:
+   ```bash
+   git commit -m "Add feature: description"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. Open a pull request detailing your changes.
 
-Fork the repository.
+---
 
-Create a new branch for your feature:
-
-bash
-git checkout -b feature/your-feature-name
-Commit your changes with a descriptive message:
-
-bash
-git commit -m "Add feature: description"
-Push to your branch:
-
-bash
-git push origin feature/your-feature-name
-Open a pull request detailing your changes.
-
-License
+## License
 This project is licensed under the MIT License.
 
-Acknowledgments
-Codespace Academy: For the curriculum that inspired this project.
+---
 
-React & Community: For the tools and documentation that make development accessible.
+## Acknowledgments
+- **Codespace Academy:** For the curriculum that inspired this project.
+- **React & Community:** For the tools and documentation that make development accessible.
+- **Pixabay:** For the dynamic product images.
 
-Unsplash: For the dynamic product images.
+---
 
 Happy coding! 🚀
+```
+
+---
+
