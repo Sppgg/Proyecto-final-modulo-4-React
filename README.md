@@ -161,7 +161,7 @@ This project is licensed under the MIT License.
 ## Acknowledgments
 - **Codespace Academy:** For the curriculum that inspired this project.
 - **React & Community:** For the tools and documentation that make development accessible.
-- **Pixabay:** For the dynamic product images.
+- **istockphoto:** For the dynamic product images.
 
 ---
 
