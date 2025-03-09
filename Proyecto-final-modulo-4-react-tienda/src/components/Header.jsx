@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/HeaderComponent.css";
+import { FaShoppingCart } from "react-icons/fa"; //importamos el icono del carrito
 
 const Header = () => {
   return (
@@ -12,7 +13,9 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">
+              <FaShoppingCart size={20} color="#333" />
+            </Link>
           </li>
         </ul>
       </nav>
