@@ -1,14 +1,31 @@
-import { useState } from 'react'
-import './App.css'
+// src/App.jsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./styles/App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+import { CartProvider } from "./contexts/CartContext";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Cart from "./components/Cart";
+import ProductList from "./components/ProductList";
+import ProductDetails from "./components/ProductDetails";
 
+const App = () => {
   return (
-    <div>
+    <CartProvider>
+      <Router>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<ProductList />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
+    </CartProvider>
+  );
+};
 
-    </div>
-  )
-}
-
-export default App
+export default App;

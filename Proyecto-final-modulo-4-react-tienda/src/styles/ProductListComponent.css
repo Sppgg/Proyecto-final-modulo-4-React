@@ -1,0 +1,23 @@
+/* src/styles/ProductListComponent.css */
+.product-list-container {
+  padding: 1rem;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  width: 300px;
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
