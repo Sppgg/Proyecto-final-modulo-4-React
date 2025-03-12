@@ -1,40 +1,10 @@
 // src/contexts/CartContext.js
 import React, { createContext, useReducer } from "react";
-import { useState } from "react";
 
 export const CartContext = createContext();
-// const [products, setProducts] = useState([]);
+
 const initialState = {
   cartItems: [],
-};
-
-// Funciones manejadoras para incrementar y decrementar productos añadidos al carrito
-
-const decreaseProduct = (productId) => {
-  // encontrar el elemento que sea = al elemto id. si eso existe, elemento.cantidad < 1 deleteProduct
-
-  setProducts(
-    products.map((element) => {
-      if (element.cantidad < 1) {
-        console.log("Hola desde decreaseproduct");
-      } else {
-        element.id === productId
-          ? { ...element, quantity: element.quantity - 1 }
-          : element;
-      }
-    })
-  );
-};
-
-const increaseProduct = (product) => {
-  // const existingProducts = productos.find((elemento)=> elemento.id === producto.id);
-  setProducts(
-    products.map((element) =>
-      element.id === product.id
-        ? { ...element, quantity: (element.quantity || 1) + 1 }
-        : element
-    )
-  );
 };
 
 const cartReducer = (state, action) => {
@@ -44,6 +14,7 @@ const cartReducer = (state, action) => {
         (item) => item.id === action.payload.id
       );
       if (existingItem) {
+        // Incrementa la cantidad del producto ya agregado
         return {
           ...state,
           cartItems: state.cartItems.map((item) =>
@@ -53,17 +24,47 @@ const cartReducer = (state, action) => {
           ),
         };
       } else {
+        // Agrega el producto con cantidad 1
         return {
           ...state,
           cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
         };
       }
     }
-    case "REMOVE_FROM_CART":
+    case "REMOVE_FROM_CART": {
       return {
         ...state,
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
       };
+    }
+    case "INCREASE_PRODUCT": {
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          item.id === action.payload
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        ),
+      };
+    }
+    case "DECREASE_PRODUCT": {
+      return {
+        ...state,
+        cartItems: state.cartItems
+          .map((item) => {
+            if (item.id === action.payload) {
+              // Si la cantidad es mayor a 1, disminuye; caso contrario, lo elimina
+              if (item.quantity > 1) {
+                return { ...item, quantity: item.quantity - 1 };
+              }
+              // De lo contrario, lo retornamos como null para eliminarlo
+              return null;
+            }
+            return item;
+          })
+          .filter(Boolean), // Filtra y elimina aquellos productos nulos
+      };
+    }
     default:
       return state;
   }
@@ -78,6 +79,14 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = (productId) => {
     dispatch({ type: "REMOVE_FROM_CART", payload: productId });
+  };
+
+  const increaseProduct = (productId) => {
+    dispatch({ type: "INCREASE_PRODUCT", payload: productId });
+  };
+
+  const decreaseProduct = (productId) => {
+    dispatch({ type: "DECREASE_PRODUCT", payload: productId });
   };
 
   return (

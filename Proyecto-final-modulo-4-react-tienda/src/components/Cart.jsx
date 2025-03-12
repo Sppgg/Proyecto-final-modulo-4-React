@@ -1,15 +1,18 @@
 // aquí se muestran los productos añadidos al carrito
-// src/components/Cart.jsx
-import React, { useContext } from "react";
+// src/components/Cart.jsximport React, { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
+import { useContext } from "react";
 
 const Cart = () => {
   const { cartItems, removeFromCart, increaseProduct, decreaseProduct } =
     useContext(CartContext);
+  // Calcula el total sumando el precio multiplicado por la cantidad de cada producto
 
-  const handleRemove = (id) => {
-    removeFromCart(id);
-  };
+  const totalAmount = cartItems.reduce(
+    // utilizamos reduce para recorrer el array cartItems y acumular la suma de item.price * item.quantity para cada producto.
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   return (
     <div style={{ padding: "1rem" }}>
@@ -29,17 +32,18 @@ const Cart = () => {
             >
               <h2>{item.name}</h2>
               <p>Price: {item.price}€</p>
-              <div>
-                <button onClick={decreaseProduct}>-</button>
-                <p>Quantity: {item.quantity}</p>
-                <button onClick={increaseProduct}>+</button>
-              </div>
-
-              <button onClick={() => handleRemove(item.id)}>Remove</button>
+              <p>
+                {" "}
+                <button onClick={() => decreaseProduct(item.id)}>-</button>
+                Quantity: {item.quantity}{" "}
+                <button onClick={() => increaseProduct(item.id)}>+</button>
+              </p>
+              <button onClick={() => removeFromCart(item.id)}>Remove</button>
             </li>
           ))}
         </ul>
       )}
+      <h2>Total: {totalAmount}€</h2>
     </div>
   );
 };
