@@ -1,6 +1,6 @@
 // Componente Product Details
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
 import { CartContext } from "../contexts/CartContext";
