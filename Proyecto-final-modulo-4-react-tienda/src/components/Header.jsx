@@ -1,6 +1,7 @@
 // Componente para el header
 
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../styles/HeaderComponent.css";
 import { AuthContext } from "../contexts/AuthContext";
@@ -8,6 +9,7 @@ import { FaShoppingCart } from "react-icons/fa"; //importamos el icono del carri
 
 const Header = () => {
   const { auth, logout } = useContext(AuthContext);
+
   return (
     <header className="header">
       <nav>
@@ -20,6 +22,13 @@ const Header = () => {
               <FaShoppingCart />
             </Link>
           </li>
+          {auth.token && (
+            <li>
+              <button className="logout-btn" onClick={logout}>
+                Logout
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

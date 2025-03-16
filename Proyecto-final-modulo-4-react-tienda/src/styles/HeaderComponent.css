@@ -21,3 +21,15 @@
   font-weight: bold;
   font-size: 1.2rem;
 }
+
+.logout-btn {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  text-decoration: underline;
+}

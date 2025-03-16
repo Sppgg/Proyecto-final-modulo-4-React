@@ -24,3 +24,10 @@
   height: 200px;
   object-fit: cover;
 }
+
+.success-msg {
+  color: green;
+  font-weight: bold;
+  margin: 8px 0;
+  text-align: center;
+}

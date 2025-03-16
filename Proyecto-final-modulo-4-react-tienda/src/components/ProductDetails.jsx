@@ -10,6 +10,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const { data: products, loading } = useProducts();
   const { addToCart } = useContext(CartContext);
+  const [successMsg, setSuccessMsg] = useState("");
 
   // Mostramos un mensaje de carga
   if (loading) return <p>Loading product details...</p>;
@@ -19,6 +20,8 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     addToCart(product);
+    setSuccessMsg("Product added successfully!");
+    setTimeout(() => setSuccessMsg(""), 2000);
   };
 
   return (
@@ -30,6 +33,7 @@ const ProductDetails = () => {
         <strong>Price:</strong> {product.price}€
       </p>
       <button onClick={handleAddToCart}>Add to Cart</button>
+      {successMsg && <p className="success-msg">{successMsg}</p>}
     </div>
   );
 };
