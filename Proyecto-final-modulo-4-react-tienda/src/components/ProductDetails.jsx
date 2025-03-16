@@ -1,4 +1,5 @@
-// src/components/ProductDetails.jsx
+// Componente Product Details
+
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
@@ -9,7 +10,7 @@ const ProductDetails = () => {
   const { data: products, loading } = useProducts();
   const { addToCart } = useContext(CartContext);
 
-  // Puedes descomentar la siguiente línea si deseas mostrar un mensaje de carga
+  // Mostramos un mensaje de carga
   if (loading) return <p>Loading product details...</p>;
 
   const product = products.find((p) => p.id === Number(id));
@@ -20,13 +21,9 @@ const ProductDetails = () => {
   };
 
   return (
-    <div style={{ padding: "1rem" }}>
+    <div className="product-details-container">
       <h1>{product.name}</h1>
-      <img
-        src={product.image}
-        alt={product.name}
-        style={{ width: "400px", objectFit: "cover" }}
-      />
+      <img src={product.image} alt={product.name} />
       <p>{product.description}</p>
       <p>
         <strong>Price:</strong> {product.price}€

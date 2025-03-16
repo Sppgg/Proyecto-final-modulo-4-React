@@ -1,5 +1,6 @@
 // aquí se muestran los productos añadidos al carrito
-// src/components/Cart.jsximport React, { useContext } from "react";
+
+React, { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
 import { useContext } from "react";
 
@@ -15,20 +16,16 @@ const Cart = () => {
   );
 
   return (
-    <div style={{ padding: "1rem" }}>
+    <div className="cart-container">
       <h1>Your Shopping Cart</h1>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <ul style={{ listStyle: "none", padding: 0 }}>
+        <ul className="cart-list">
           {cartItems.map((item) => (
-            <li
+            <li className="cart-list"
               key={item.id}
-              style={{
-                marginBottom: "1rem",
-                borderBottom: "1px solid #ddd",
-                paddingBottom: "1rem",
-              }}
+              
             >
               <h2>{item.name}</h2>
               <p>Price: {item.price}€</p>
@@ -36,7 +33,10 @@ const Cart = () => {
                 {" "}
                 <button onClick={() => decreaseProduct(item.id)}>-</button>
                 Quantity: {item.quantity}{" "}
-                <button onClick={() => increaseProduct(item.id)}>+</button>
+                <span className="cart-buttons">
+                    <button onClick={() => increaseProduct(item.id)}>+</button>
+                    <button onClick={() => decreaseProduct(item.id)}>-</button>
+                  </span>
               </p>
               <button onClick={() => removeFromCart(item.id)}>Remove</button>
             </li>

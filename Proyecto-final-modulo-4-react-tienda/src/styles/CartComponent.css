@@ -1,0 +1,29 @@
+/* Estilos para el carrito */
+.cart-container {
+  padding: 1rem;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.cart-item h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.cart-item p {
+  margin: 0.5rem 0;
+}
+
+.cart-buttons button {
+  margin: 0 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
