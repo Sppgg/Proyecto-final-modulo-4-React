@@ -1,4 +1,3 @@
-```markdown
 # Smart Home Store
 
 Smart Home Store is a modern React-based e-commerce platform for smart home products. This application allows users to browse a catalog of smart home devices, view detailed product information, manage a shopping cart, and perform authentication (login/logout) with session persistence using local storage.
