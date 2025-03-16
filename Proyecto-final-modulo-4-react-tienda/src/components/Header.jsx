@@ -3,9 +3,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/HeaderComponent.css";
+import { AuthContext } from "../contexts/AuthContext";
 import { FaShoppingCart } from "react-icons/fa"; //importamos el icono del carrito
 
 const Header = () => {
+  const { auth, logout } = useContext(AuthContext);
   return (
     <header className="header">
       <nav>
@@ -15,7 +17,7 @@ const Header = () => {
           </li>
           <li>
             <Link to="/cart">
-              <FaShoppingCart size={20} color="#333" />
+              <FaShoppingCart />
             </Link>
           </li>
         </ul>

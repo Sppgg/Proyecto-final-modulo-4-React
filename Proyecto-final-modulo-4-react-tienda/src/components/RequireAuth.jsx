@@ -1,0 +1,18 @@
+// src/components/RequireAuth.jsx
+
+import React, { useContext } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
+
+const RequireAuth = ({ children }) => {
+  const { auth } = useContext(AuthContext);
+  const location = useLocation();
+
+  if (!auth.token) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  return children;
+};
+
+export default RequireAuth;

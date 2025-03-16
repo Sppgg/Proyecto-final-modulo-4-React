@@ -1,3 +1,5 @@
+// Array de objetos
+
 const products = [
   {
     id: 1,

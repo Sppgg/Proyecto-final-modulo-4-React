@@ -1,4 +1,5 @@
-// src/contexts/CartContext.js
+// Contexto del carrito
+
 import React, { createContext, useReducer } from "react";
 
 export const CartContext = createContext();

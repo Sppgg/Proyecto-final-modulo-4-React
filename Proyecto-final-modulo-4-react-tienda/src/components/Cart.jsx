@@ -1,8 +1,8 @@
 // aquí se muestran los productos añadidos al carrito
 
-React, { useContext } from "react";
+import React, { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
-import { useContext } from "react";
+import "../styles/CartComponent.css";
 
 const Cart = () => {
   const { cartItems, removeFromCart, increaseProduct, decreaseProduct } =
@@ -23,27 +23,23 @@ const Cart = () => {
       ) : (
         <ul className="cart-list">
           {cartItems.map((item) => (
-            <li className="cart-list"
-              key={item.id}
-              
-            >
+            <li className="cart-list" key={item.id}>
               <h2>{item.name}</h2>
               <p>Price: {item.price}€</p>
               <p>
                 {" "}
-                <button onClick={() => decreaseProduct(item.id)}>-</button>
-                Quantity: {item.quantity}{" "}
                 <span className="cart-buttons">
-                    <button onClick={() => increaseProduct(item.id)}>+</button>
-                    <button onClick={() => decreaseProduct(item.id)}>-</button>
-                  </span>
+                  <button onClick={() => decreaseProduct(item.id)}>-</button>
+                  Quantity: {item.quantity}{" "}
+                  <button onClick={() => increaseProduct(item.id)}>+</button>
+                </span>
               </p>
               <button onClick={() => removeFromCart(item.id)}>Remove</button>
             </li>
           ))}
         </ul>
       )}
-      <h2>Total: {totalAmount}€</h2>
+      <h2>Total: {totalAmount.toFixed(2)}€</h2>
     </div>
   );
 };

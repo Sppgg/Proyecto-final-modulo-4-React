@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
 import { CartContext } from "../contexts/CartContext";
+import "../styles/ProductDetailsComponent.css";
 
 const ProductDetails = () => {
   const { id } = useParams();

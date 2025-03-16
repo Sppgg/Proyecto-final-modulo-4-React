@@ -1,170 +1,183 @@
-# Proyecto-final-modulo-4-React
-Smart Home Store - Final Project
+
+---
+
+```markdown
+# Smart Home Store
+
+Smart Home Store is a modern React-based e-commerce platform for smart home products. This application allows users to explore a catalog of products, view detailed descriptions, and manage their shopping cart. Additionally, it features a user authentication system with protected routes and local storage for session management.
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Objectives](#objectives)
-- [Project Structure](#project-structure)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Usage](#usage)
-- [Evaluation Criteria](#evaluation-criteria)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
+
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Project Structure](#project-structure)
+5. [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Usage](#usage)
+6. [Authentication Workflow](#authentication-workflow)
+7. [Contribution Guidelines](#contribution-guidelines)
+8. [License](#license)
 
 ---
 
 ## Introduction
-This project is a responsive front-end web application built with React. It simulates an online smart home store where users can browse a list of smart home products, view product details, and manage a shopping cart. The project integrates local storage and a fake API call using mock data.
 
----
+Smart Home Store is a project designed to showcase the following:
 
-## Objectives
-- **React Fundamentals:** Implement functional components, hooks (`useState`, `useEffect`, `useParams`), and routing with React Router.
-- **Global State Management:** Use Context API with `useReducer` for managing the shopping cart state.
-- **Fake API Integration:** Simulate API calls by fetching product data from local storage, with fallback to a fake API call.
-- **Responsive Design:** Create a user-friendly interface with separate CSS files for modular styling.
-
----
-
-## Project Structure
-```
-smart-home-store/
-├── public/
-│   └── index.html                  # HTML template
-├── src/
-│   ├── assets/                     # Static assets (images, etc.)
-│   ├── components/                 # React components
-│   │   ├── Cart.jsx                # Shopping cart component
-│   │   ├── Footer.jsx              # Footer component
-│   │   ├── Header.jsx              # Header component
-│   │   ├── ProductDetails.jsx      # Product details view
-│   │   └── ProductList.jsx         # Product listing component
-│   ├── contexts/                   # Context providers
-│   ├── hooks/                      # Custom hooks (e.g., useProducts.js)
-│   ├── services/                   # Mock API data and services
-│   │   └── Products.jsx            # Array of smart home products
-│   ├── styles/                     # CSS files
-│   │   ├── App.css                 # Global application styles
-│   │   ├── HeaderComponent.css     # Styles for Header component
-│   │   └── ProductListComponent.css# Styles for ProductList component
-│   ├── App.jsx                     # Main application component with routing
-│   └── main.jsx                    # Entry point of the application
-├── package.json                    # Project dependencies and scripts
-└── README.md                       # Documentation file (this file)
-```
+- **React fundamentals**: Functional components, hooks (`useState`, `useEffect`, and `useContext`), and Context API.
+- **Global state management**: Managing a shopping cart and user authentication with local storage.
+- **UI/UX principles**: Modularized components with individual styling for maintainability and scalability.
+- **Protected routing**: Restricting access to certain pages based on user authentication status.
 
 ---
 
 ## Features
-- **Home Page (`/`):**  
-  Displays a grid of smart home products with images, names, and prices.
-- **Product Details (`/product/:id`):**  
-  Shows detailed information of the selected product retrieved via URL parameters.
-- **Shopping Cart (`/cart`):**  
-  Allows adding and removing products, with global state management via Context API.
-- **Fake API Call & Local Storage:**  
-  The `useProducts` hook fakes an API call with a delay using `setTimeout`. It checks local storage for data and, if absent, stores the mock product data.
-- **Modular CSS:**  
-  Each component has its own CSS file under the `styles/` directory for better maintainability.
+
+### General Features
+
+- **Product Catalog**: Browse a diverse selection of smart home devices, with detailed descriptions and responsive layouts.
+- **Shopping Cart**: Add, remove, increment, or decrement product quantities. Cart total is dynamically updated.
+- **User Authentication**: Users must log in to access the app’s features. A dummy account (`username: admin`, `password: admin`) is pre-configured for demo purposes.
+- **Protected Routes**: Certain pages are accessible only when logged in.
+- **Local Storage Integration**: Login session is persisted even after refreshing the browser.
+- **Responsive Design**: Ensures a seamless experience on desktop and mobile devices.
 
 ---
 
 ## Technologies Used
-- **React & React Router:** For building the UI and managing navigation.
-- **Hooks & Context API:** For local and global state management.
-- **Local Storage:** To simulate API data caching.
-- **CSS:** Modular styling with separate CSS files for each component.
-- **Vite (optional):** For a fast development server and build tool.
+
+- **React**: Component-based UI development.
+- **React Router**: Client-side routing.
+- **Context API**: State management for shopping cart and authentication.
+- **CSS**: Component-level styles for modularity and scalability.
+- **Local Storage**: For persisting login state across sessions.
+- **React Icons**: For visually appealing and intuitive UI elements.
+
+---
+
+## Project Structure
+
+```
+smart-home-store/
+├── public/
+│   └── index.html                  # Base HTML template
+├── src/
+│   ├── assets/                     # Static assets like images
+│   ├── components/                 # Reusable components
+│   │   ├── Header.jsx              # Header with navigation
+│   │   ├── Footer.jsx              # Footer section
+│   │   ├── ProductList.jsx         # Product listing grid
+│   │   ├── ProductDetails.jsx      # Detailed view for a single product
+│   │   ├── Cart.jsx                # Shopping cart functionality
+│   │   └── RequireAuth.jsx         # Protects routes requiring login
+│   ├── contexts/                   # React Contexts for state management
+│   │   ├── CartContext.js          # State and actions for the shopping cart
+│   │   └── AuthContext.js          # State and actions for user authentication
+│   ├── hooks/                      # Custom hooks
+│   │   └── useProducts.js          # Fetches and manages product data
+│   ├── pages/                      # Application pages (views)
+│   │   ├── HomePage.jsx            # Home page with product list
+│   │   ├── ProductDetailsPage.jsx  # Product detail page
+│   │   ├── CartPage.jsx            # Shopping cart page
+│   │   └── LoginPage.jsx           # Login functionality
+│   ├── services/                   # Static data and service files
+│   │   └── products.js             # Mock product data
+│   ├── styles/                     # CSS for components and pages
+│   │   ├── App.css                 # Global styles
+│   │   ├── HeaderComponent.css     # Styles for Header.jsx
+│   │   ├── ProductListComponent.css# Styles for ProductList.jsx
+│   │   ├── ProductDetailsComponent.css # Styles for ProductDetails.jsx
+│   │   ├── CartComponent.css       # Styles for Cart.jsx
+│   │   └── FooterComponent.css     # Styles for Footer.jsx
+│   ├── App.jsx                     # Main application entry point
+│   └── main.jsx                    # React rendering and app initialization
+├── package.json                    # Dependencies and scripts
+└── README.md                       # Project documentation
+```
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-- **Node.js** (v14 or newer)
-- **npm** or **yarn**
-- **Git** for version control
-- A code editor (e.g., Visual Studio Code)
+
+Make sure you have the following installed:
+
+- **Node.js** (v14 or higher) and npm
+- **Git**
+- A modern web browser
+- Code editor (e.g., VS Code)
 
 ### Installation
+
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/smart-home-store.git
+   git clone https://github.com/Sppgg/Proyecto-final-modulo-4-React
    ```
 2. Navigate to the project directory:
    ```bash
    cd smart-home-store
    ```
-3. Install the dependencies:
+3. Install dependencies:
    ```bash
    npm install
    ```
-   or
-   ```bash
-   yarn install
-   ```
 
 ### Usage
+
 1. Start the development server:
    ```bash
    npm run dev
    ```
-   or
-   ```bash
-   yarn dev
-   ```
-2. Open your browser and navigate to `http://localhost:3000` (or the port provided by your environment).
+2. Open the application in your browser at `http://localhost:3000`.
 
 ---
 
-## Evaluation Criteria
-| Criterion                          | Weight |
-|------------------------------------|--------|
-| Componentization & Code Structure  | 20%    |
-| Use of Hooks & Custom Hook         | 25%    |
-| Global State Management (Context)  | 20%    |
-| Routing & Navigation               | 15%    |
-| Fake API Integration & Local Storage | 10%  |
-| Documentation (README & Comments)  | 10%    |
+## Authentication Workflow
+
+- Users must log in to access the app’s features. Use the following credentials to log in:
+  ```
+  Username: admin
+  Password: admin
+  ```
+- Once logged in:
+  - The session token is stored in **local storage**.
+  - Protected routes (e.g., the cart or product details pages) become accessible.
+  - You can log out at any time, clearing the session.
 
 ---
 
-## Contributing
-Contributions are welcome! Follow these steps:
+## Contribution Guidelines
+
+Contributions are welcome! To contribute:
+
 1. Fork the repository.
-2. Create a new branch for your feature:
+2. Create a feature branch:
    ```bash
    git checkout -b feature/your-feature-name
    ```
-3. Commit your changes with a descriptive message:
+3. Commit your changes:
    ```bash
-   git commit -m "Add feature: description"
+   git commit -m "Add new feature: description"
    ```
 4. Push to your branch:
    ```bash
    git push origin feature/your-feature-name
    ```
-5. Open a pull request detailing your changes.
+5. Open a pull request.
 
 ---
 
 ## License
-This project is licensed under the MIT License.
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
-## Acknowledgments
-- **Codespace Academy:** For the curriculum that inspired this project.
-- **React & Community:** For the tools and documentation that make development accessible.
-- **istockphoto:** For the dynamic product images.
-
----
-
-Happy coding! 🚀
+With the Smart Home Store project, you'll discover how to build modern React applications that are modular, maintainable, and scalable. Happy coding! 🚀
 ```
+
+---
 

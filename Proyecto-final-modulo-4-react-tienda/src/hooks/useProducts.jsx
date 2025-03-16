@@ -1,5 +1,5 @@
-//  un hook personalizado que encapsule alguna lógica reutilizable.
-// src/hooks/useProducts.js
+//  un hook personalizado que encapsule alguna lógica reutilizable
+
 import { useState, useEffect } from "react";
 import productsData from "../services/products";
 

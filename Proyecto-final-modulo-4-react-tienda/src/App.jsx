@@ -1,30 +1,55 @@
-// src/App.jsx
+// APP
+
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./styles/App.css";
-
-import { CartProvider } from "./contexts/CartContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Cart from "./components/Cart";
-import ProductList from "./components/ProductList";
-import ProductDetails from "./components/ProductDetails";
+
+// Importamos las páginas
+import LoginPage from "./pages/LoginPage";
+import RequireAuth from "./components/RequireAuth";
+import HomePage from "./pages/HomePage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
+import CartPage from "./pages/CartPage";
 
 const App = () => {
   return (
-    <CartProvider>
-      <Router>
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<ProductList />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
-        </main>
-        <Footer />
-      </Router>
-    </CartProvider>
+    <Router>
+      <Header />
+      <main>
+        <Routes>
+          {/* Ruta de login abierta */}
+          <Route path="/login" element={<LoginPage />} />
+          {/* Rutas protegidas */}
+          <Route
+            path="/"
+            element={
+              <RequireAuth>
+                <HomePage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/product/:id"
+            element={
+              <RequireAuth>
+                <ProductDetailsPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <RequireAuth>
+                <CartPage />
+              </RequireAuth>
+            }
+          />
+        </Routes>
+      </main>
+      <Footer />
+    </Router>
   );
 };
 
