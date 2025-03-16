@@ -7,7 +7,7 @@ import { CartContext } from "../contexts/CartContext";
 import "../styles/ProductDetailsComponent.css";
 
 const ProductDetails = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Obtiene el id de la URL
   const { data: products, loading } = useProducts();
   const { addToCart } = useContext(CartContext);
   const [successMsg, setSuccessMsg] = useState("");
@@ -15,6 +15,7 @@ const ProductDetails = () => {
   // Mostramos un mensaje de carga
   if (loading) return <p>Loading product details...</p>;
 
+  // Busca el producto por id
   const product = products.find((p) => p.id === Number(id));
   if (!product) return <p>Product not found!</p>;
 

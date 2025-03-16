@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import productsData from "../services/products";
 
+// Hook para obtener productos con simulación de retardo
 const useProducts = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);

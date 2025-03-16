@@ -14,7 +14,7 @@ const ProductList = () => {
 
   if (loading) return <p>Loading products...</p>;
 
-  // Función que recibe el producto a agregar
+  // Función que recibe el producto a agregar al carrito + mostrar mensaje de agregado
   const handleAddToCart = (product) => {
     addToCart(product);
     setSuccessMsg("Product added successfully!");

@@ -9,6 +9,7 @@ import { FaShoppingCart } from "react-icons/fa"; //importamos el icono del carri
 import logo from "../assets/logo.png";
 
 const Header = () => {
+  // Obtenemos auth y logout desde el contexto de autenticación
   const { auth, logout } = useContext(AuthContext);
 
   return (
@@ -25,6 +26,7 @@ const Header = () => {
               <FaShoppingCart size={20} color="#333" />
             </Link>
           </li>
+          {/* Se muestra el botón de logout si el usuario ha iniciado sesión */}
           {auth.token && (
             <li>
               <button className="logout-btn" onClick={logout}>
