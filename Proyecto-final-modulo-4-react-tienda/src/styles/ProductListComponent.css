@@ -1,4 +1,5 @@
-/* src/styles/ProductListComponent.css */
+/* Estilos para la lista de productos */
+
 .product-list-container {
   padding: 1rem;
 }
@@ -10,10 +11,11 @@
 }
 
 .product-card {
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 4px;
   padding: 1rem;
   width: 300px;
+  text-align: center;
 }
 
 .product-card img {

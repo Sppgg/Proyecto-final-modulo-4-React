@@ -1,4 +1,5 @@
-// Esto es la página de inicio
+// Componente para la lista de productos
+
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
@@ -18,7 +19,7 @@ const ProductList = () => {
 
   return (
     <div className="product-list-container">
-      <h1>Smart Home Products</h1>
+      <h1>Smart Home Store</h1>
       <div className="product-grid">
         {products.map((product) => (
           <div className="product-card" key={product.id}>

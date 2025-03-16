@@ -1,4 +1,5 @@
-// src/components/Header.jsx
+// Componente para el header
+
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/HeaderComponent.css";
