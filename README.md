@@ -113,7 +113,7 @@ smart-home-store/
 
 2. **Navigate to the project directory:**
    ```bash
-   cd smart-home-store
+   cd Proyecto-final-modulo-4-react-tienda
    ```
 
 3. **Install dependencies:**
